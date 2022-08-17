@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/workspace/douma-algo/cpp_code/line/array/ArrayUtils.cpp
+iostream
+-
+
+/cygdrive/c/workspace/douma-algo/cpp_code/main.cpp
+iostream
+-
+

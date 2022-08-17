@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>图结构及其算法单元测试</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+        const graph = [
+            [7, 9],
+            [0, 1],
+            [0, 3],
+            [1, 2],
+            [1, 6],
+            [2, 3],
+            [2, 5],
+            [3, 4],
+            [4, 5],
+            [5, 6]
+        ]
+
+        //-----------------------------测试图的存储---------------------------------------------
+        import {AdjMatrix} from './AdjMatrix.js'
+        function testAdjMatrix() {
+            const adjMatrix = new AdjMatrix(graph)
+            alert("邻接矩阵测试结果：\n" + adjMatrix.toString())
+        }
+
+        import {AdjSet} from './AdjSet.js'
+        function testAdjSet() {
+            const adjSet = new AdjSet(graph)
+            alert("邻接表测试结果：\n" + adjSet.toString())
+        }
+
+        // 所有功能的测试触发，可以通过注释达到测试某个动能的目的
+        //testAdjMatrix()
+        //testAdjSet()
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

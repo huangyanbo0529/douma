@@ -1,0 +1,89 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>图结构及其算法单元测试</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+        const graph = [
+            [7, 9],
+            [0, 1],
+            [0, 3],
+            [1, 2],
+            [1, 6],
+            [2, 3],
+            [2, 5],
+            [3, 4],
+            [4, 5],
+            [5, 6]
+        ]
+
+        //-----------------------------测试有向图---------------------------------------------
+        import {GraphImpl} from './GraphImpl.js'
+        function testGraphImpl() {
+            const graphImpl = new GraphImpl(graph, true)
+            alert("有向图的邻接表：\n" + graphImpl.toString())
+        }
+
+        const weighted_graph = [
+            [7, 8],
+            [0, 1, 5],
+            [0, 2, 8],
+            [1, 3, 3],
+            [1, 4, 9],
+            [2, 3, 4],
+            [2, 6, 8],
+            [3, 5, 6],
+            [5, 6, 2]
+        ]
+
+        import {WeightedGraphImpl} from './WeightedGraphImpl.js'
+        function testWeightedGraphImpl() {
+            const graphImpl = new WeightedGraphImpl(weighted_graph, true)
+            alert("有向有权图的邻接表：\n" + graphImpl.toString())
+        }
+
+        const directedgraph_dfs = [
+            [5, 5],
+            [0, 1],
+            [1, 2],
+            [1, 3],
+            [2, 4],
+            [3, 2]
+        ]
+
+        import {CycleDetection} from './CycleDetection.js'
+        function testCycleDetection() {
+            const graphImpl = new GraphImpl(directedgraph_dfs, true)
+            const cd = new CycleDetection(graphImpl)
+            alert("有向图是否有环：\n" + cd.getHasCycle())
+        }
+
+        import {TopologySortBFS} from './TopologySortBFS.js'
+        function testTopologySortBFS() {
+            const graphImpl = new GraphImpl(directedgraph_dfs, true)
+            const cd = new TopologySortBFS(graphImpl)
+            alert("拓扑排序：\n" + cd.getRes())
+            alert("是否有环：\n" + cd.isHasCycle())
+        }
+
+        import {TopologySortDFS} from './TopologySortDFS.js'
+        function testTopologySortDFS() {
+            const graphImpl = new GraphImpl(directedgraph_dfs, true)
+            const cd = new TopologySortDFS(graphImpl)
+            alert("拓扑排序：\n" + cd.getRes())
+            alert("是否有环：\n" + cd.isHasCycle())
+        }
+
+        // 所有功能的测试触发，可以通过注释达到测试某个动能的目的
+        //testGraphImpl()
+        //testWeightedGraphImpl()
+        //testCycleDetection()
+        //testTopologySortBFS()
+        testTopologySortDFS()
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

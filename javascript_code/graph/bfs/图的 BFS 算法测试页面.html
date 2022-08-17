@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>图结构及其算法单元测试</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+
+        const graph_bfs = [
+            [7, 8],
+            [0, 1],
+            [0, 2],
+            [1, 3],
+            [1, 4],
+            [2, 3],
+            [2, 6],
+            [3, 5],
+            [5, 6]
+        ]
+
+        //-----------------------------测试图的 BFS 及其算法---------------------------------------------
+        import {AdjSet} from '../AdjSet.js'
+        import {GraphBFS} from './GraphBFS.js'
+        function testGraphBFS() {
+            const graphBFS = new GraphBFS(new AdjSet(graph_bfs))
+            alert("图的 BFS 结果：\n" + graphBFS.getRes())
+        }
+
+        import {CC} from './CC.js'
+        function testCC() {
+            const cc = new CC(new AdjSet(graph_bfs))
+            alert("图的连通分量个数：\n" + cc.getCCCount())
+        }
+
+        import {SingleSourcePath} from './SingleSourcePath.js'
+        function testSingleSourcePath() {
+            const cc = new SingleSourcePath(new AdjSet(graph_bfs), 0)
+            alert("顶点 0 到顶点 6 的路径：\n" + cc.path(6))
+        }
+
+        import {SingleSourcePath1} from './SingleSourcePath1.js'
+        function testSingleSourcePath1() {
+            const cc = new SingleSourcePath1(new AdjSet(graph_bfs), 0, 6)
+            alert("顶点 0 到顶点 6 的路径：\n" + cc.path())
+        }
+
+        import {CycleDetection} from './CycleDetection.js'
+        function testCycleDetection() {
+            const cd = new CycleDetection(new AdjSet(graph_bfs))
+            alert("图是否有环：\n" + cd.getHasCycle())
+        }
+
+        import {BipartitionDetection} from './BipartitionDetection.js'
+        function testBipartitionDetection() {
+            const bd = new BipartitionDetection(new AdjSet(graph_bfs))
+            alert("图是否是二分图：\n" + bd.getIsBipartition())
+        }
+
+        import {SingleSourceShortestPath} from './SingleSourceShortestPath.js'
+        function testSingleSourceShortestPath() {
+            const sssp = new SingleSourceShortestPath(new AdjSet(graph_bfs), 0)
+            alert("顶点 0 到达顶点 6 的最短路径：\n" + sssp.path(6))
+            alert("顶点 0 到达顶点 6 的最短路径大小：\n" + sssp.distanceOf(6))
+        }
+
+        //testGraphBFS()
+        //testCC()
+        //testSingleSourcePath()
+        //testSingleSourcePath1()
+        //testCycleDetection()
+        //testBipartitionDetection()
+        //testSingleSourceShortestPath()
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

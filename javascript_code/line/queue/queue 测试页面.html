@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Set 映射测试页面</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+        import {LinkedListQueue} from './LinkedListQueue.js'
+        import {LinkedList} from '../linkedlist/LinkedList.js'
+        function testLinkedListQueue() {
+            const linkedlist = new LinkedList()
+            const queue = new LinkedListQueue(linkedlist)
+            queue.enqueue(10)
+            queue.enqueue(11)
+            alert(queue.toString())
+            queue.dequeue()
+            alert(queue.toString())
+        }
+
+
+
+        // 所有功能的测试触发，可以通过注释达到测试某个动能的目的
+        testLinkedListQueue()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

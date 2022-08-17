@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g -Wl,--enable-auto-import CMakeFiles/CMakeCXXCompilerId.dir/CMakeFiles/3.20.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o CMakeFiles/CMakeCXXCompilerId.dir/main.cpp.o -o CMakeCXXCompilerId.exe -Wl,--out-implib,libCMakeCXXCompilerId.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

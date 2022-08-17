@@ -1,0 +1,3 @@
+/cygdrive/c/workspace/douma-algo/c_code/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/workspace/douma-algo/c_code/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/c/workspace/douma-algo/c_code/cmake-build-debug/CMakeFiles/c_code.dir

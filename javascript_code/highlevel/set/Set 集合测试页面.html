@@ -1,0 +1,113 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Set 映射测试页面</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+        import {BSTR} from '../../tree/bst/BSTR.js'
+        import {BSTSet} from './BSTSet.js'
+        function testBSTSet() {
+            const bst = new BSTR((a, b) => a - b)
+            const bstSet = new BSTSet(bst)
+            bstSet.add(2)
+            bstSet.add(4)
+            bstSet.add(1)
+
+            alert(bstSet.toString())
+
+            bstSet.add(2)
+            alert(bstSet.toString())
+
+            alert(bstSet.contains(4))
+
+            bstSet.remove(1)
+            alert(bstSet.toString())
+        }
+
+        import {LinkedList} from '../../line/linkedlist/LinkedList.js'
+        import {LinkedListSet} from './LinkedListSet.js'
+        function testLinkedListSet() {
+            const linkedList = new LinkedList()
+            const linkedListSet = new LinkedListSet(linkedList)
+            linkedListSet.add(2)
+            linkedListSet.add(4)
+            linkedListSet.add(1)
+
+            alert(linkedListSet.toString())
+
+            linkedListSet.add(2)
+            alert(linkedListSet.toString())
+
+            alert(linkedListSet.contains(4))
+
+            linkedListSet.remove(1)
+            alert(linkedListSet.toString())
+        }
+
+        import {HashSet} from './HashSet.js'
+        function testHashSet() {
+            const hashSet = new HashSet((a) => a)
+            hashSet.add(2)
+            hashSet.add(4)
+            hashSet.add(1)
+
+            alert(hashSet.toString())
+
+            hashSet.add(2)
+            alert(hashSet.toString())
+
+            alert(hashSet.contains(4))
+
+            hashSet.remove(1)
+            alert(hashSet.toString())
+        }
+
+        import {HashSet2} from './HashSet2.js'
+        function testHashSet2() {
+            const hashSet = new HashSet2((a) => a, (a, b) => a == b)
+            hashSet.add(2)
+            hashSet.add(4)
+            hashSet.add(1)
+
+            alert(hashSet.toString())
+
+            hashSet.add(2)
+            alert(hashSet.toString())
+
+            alert(hashSet.contains(4))
+
+            hashSet.remove(1)
+            alert(hashSet.toString())
+        }
+
+        import {HashSet3} from './HashSet3.js'
+        function testHashSet3() {
+            const hashSet = new HashSet3((a) => a, (a, b) => a == b)
+            hashSet.add(2)
+            hashSet.add(4)
+            hashSet.add(1)
+
+            alert(hashSet.toString())
+
+            hashSet.add(2)
+            alert(hashSet.toString())
+
+            alert(hashSet.contains(4))
+
+            hashSet.remove(1)
+            alert(hashSet.toString())
+        }
+
+
+        // 所有功能的测试触发，可以通过注释达到测试某个动能的目的
+        //testBSTSet()
+        //testLinkedListSet()
+        //testHashSet()
+        //testHashSet2()
+        testHashSet3()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

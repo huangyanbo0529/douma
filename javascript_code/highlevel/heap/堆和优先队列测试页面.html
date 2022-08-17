@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>堆和优先队列</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+        import {MaxHeap} from './MaxHeap.js'
+        function testMaxHeap() {
+            const n = 1000
+            // 小顶堆
+            const heap = new MaxHeap((a, b) => b - a)
+
+            // 1. 往堆中添加 10000 个随机整数
+            for (let i = 0; i < n; i++) {
+                heap.add(Math.random() * 100)
+            }
+
+            // 2. 依次从堆中取出 10000 个整数，并依次放入到数组中
+            const arr = new Array(n)
+            for (let i = 0; i < n; i++) {
+                arr[i] = heap.remove()
+            }
+
+            // 3. 判断先拿出来的元素是最大的，如果不是的话，则说明不符合堆的性质
+            for (let i = 1; i < n; i++) {
+                if (arr[i - 1] > arr[i]) {
+                    alert("Error")
+                }
+            }
+
+            alert("Test Succ")
+        }
+
+        import {DataStream2} from './DataStream2.js'
+        function testDataStream2() {
+            // 大顶堆
+            const heap = new MaxHeap((a, b) => a - b)
+            const dataStream = new DataStream2(heap)
+            dataStream.add(3)
+            alert(dataStream.removeMax()) // 打印 3
+            dataStream.add(6)
+            dataStream.add(5)
+            alert(dataStream.removeMax()) // 打印 6
+            dataStream.add(2)
+            dataStream.add(1)
+            alert(dataStream.removeMax()) // 打印 5
+        }
+
+        import {sort} from './HeapSort.js'
+        function testHeapSort() {
+            const data = [15, 17, 19, 13, 22, 16, 28, 30, 42, 66]
+            const maxHeap = new MaxHeap((a, b) => a - b, data)
+            alert(sort(maxHeap))
+        }
+
+        import {PriorityQueue} from './PriorityQueue.js'
+        function testPriorityQueue() {
+            // 大顶堆
+            const heap = new MaxHeap((a, b) => a - b)
+            const pq = new PriorityQueue(heap)
+
+            pq.enqueue(13)
+            pq.enqueue(10)
+            pq.enqueue(56)
+
+            alert(pq.dequeue())
+            alert(pq.getFront())
+        }
+
+        // 所有功能的测试触发，可以通过注释达到测试某个动能的目的
+        //testMaxHeap()
+        //testDataStream2()
+        //testHeapSort()
+        testPriorityQueue()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

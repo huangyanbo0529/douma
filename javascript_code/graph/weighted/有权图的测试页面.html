@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>图结构及其算法单元测试</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+        const weighted_graph = [
+            [7, 8],
+            [0, 1, 5],
+            [0, 2, 8],
+            [1, 3, 3],
+            [1, 4, 9],
+            [2, 3, 4],
+            [2, 6, 8],
+            [3, 5, 6],
+            [5, 6, 2]
+        ]
+
+        //-----------------------------测试有权图---------------------------------------------
+        import {WeightedAdjSet} from './WeightedAdjSet.js'
+        function testWeightedAdjSet() {
+            const weightedAdjSet = new WeightedAdjSet(weighted_graph)
+            alert("有权图的存储测试结果：\n" + weightedAdjSet.toString())
+        }
+
+        const prim_data = [
+            [7, 12],
+            [0, 1, 2],
+            [0, 3, 7],
+            [0, 5, 2],
+            [1, 2, 1],
+            [1, 3, 4],
+            [1, 4, 3],
+            [1, 5, 5],
+            [2, 4, 4],
+            [2, 5, 4],
+            [3, 4, 1],
+            [3, 6, 5],
+            [4, 6, 7]
+        ]
+
+        import {Prim} from './Prim.js'
+        import {CC1} from '../dfs/CC1.js'
+        function testPrim() {
+            const weightedAdjSet = new WeightedAdjSet(prim_data)
+            const cc1 = new CC1(weightedAdjSet)
+            const prim = new Prim(weightedAdjSet, cc1)
+            const res = prim.getResult()
+            let str = ""
+            for (const edge of res) {
+                str += `v=${edge[0]}, w=${edge[1]}, weight=${edge[2]}\n`
+            }
+            alert("有权图的最小生成树：\n" + str)
+        }
+
+        import {Prim1} from './Prim1.js'
+        import {MaxHeap} from '../../highlevel/heap/MaxHeap.js'
+        function testPrim1() {
+            const weightedAdjSet = new WeightedAdjSet(prim_data)
+            const cc1 = new CC1(weightedAdjSet)
+            const minHeap = new MaxHeap((edge1, edge2) => edge2[2] - edge1[2])
+            const prim = new Prim1(weightedAdjSet, cc1, minHeap)
+            const res = prim.getResult()
+            let str = ""
+            for (const edge of res) {
+                str += `v=${edge[0]}, w=${edge[1]}, weight=${edge[2]}\n`
+            }
+            alert("有权图的最小生成树：\n" + str)
+        }
+
+        const Dijkstra_data = [
+            [5, 8],
+            [0, 1, 4],
+            [0, 2, 2],
+            [1, 2, 1],
+            [1, 3, 2],
+            [1, 4, 3],
+            [2, 3, 4],
+            [2, 4, 5],
+            [3, 4, 1]
+        ]
+
+        import {Dijkstra} from './Dijkstra.js'
+        function testDijkstra() {
+            const weightedAdjSet = new WeightedAdjSet(Dijkstra_data)
+            const dijkstra = new Dijkstra(weightedAdjSet, 0)
+            const res = dijkstra.minDistanceTo(1)
+            alert("顶点 0 到顶点 1 的最短路径大小：\n" + res)
+        }
+
+        import {Dijkstra1} from './Dijkstra1.js'
+        function testDijkstra1() {
+            const weightedAdjSet = new WeightedAdjSet(Dijkstra_data)
+            // 按照距离比较，组成最小堆
+            const minHeap = new MaxHeap((a, b) => b[1] - a[1])
+            const dijkstra = new Dijkstra1(weightedAdjSet, 0, minHeap)
+            const res = dijkstra.minDistanceTo(1)
+            alert("顶点 0 到顶点 1 的最短路径大小：\n" + res)
+        }
+
+        import {Dijkstra2} from './Dijkstra2.js'
+        function testDijkstra2() {
+            const weightedAdjSet = new WeightedAdjSet(Dijkstra_data)
+            // 按照距离比较，组成最小堆
+            const minHeap = new MaxHeap((a, b) => b[1] - a[1])
+            const dijkstra = new Dijkstra2(weightedAdjSet, 0, minHeap)
+            const res = dijkstra.path(1)
+            alert("顶点 0 到顶点 1 的最短路径：\n" + res)
+        }
+
+
+        // 所有功能的测试触发，可以通过注释达到测试某个动能的目的
+        //testWeightedAdjSet()
+        //testPrim()
+        //testPrim1()
+        //testDijkstra()
+        //testDijkstra1()
+        testDijkstra2()
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

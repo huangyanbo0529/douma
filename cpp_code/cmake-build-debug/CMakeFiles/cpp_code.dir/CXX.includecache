@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/workspace/douma-algo/cpp_code/line/algo/bs/IpLocationParser.cpp
+vector
+-
+string
+-
+fstream
+-
+iostream
+-
+stdlib.h
+-
+algorithm
+-
+

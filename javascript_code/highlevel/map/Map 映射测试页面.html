@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Map 映射测试页面</title>
+    <!--注意：// 需要在支持 ES6 的环境下执行-->
+    <script type="module">
+        import {LinkedListMap} from './LinkedListMap.js'
+        function testLinkedListMap() {
+            const map = new LinkedListMap((a, b) => a == b)
+            map.add(2, 3)
+            map.add(5, 3)
+            map.add(2, 10)
+
+            alert(map.get(2))
+        }
+
+        import {BSTMap} from './BSTMap.js'
+        function testBSTMap() {
+            const map = new BSTMap((a, b) => a - b)
+            map.add(2, 3)
+            map.add(5, 3)
+            map.add(2, 10)
+
+            // 返回的是 3，因为我们的 BST 树不支持重复数据的修改
+            alert(map.get(2))
+        }
+
+        import {HashMap} from './HashMap.js'
+        function testHashMap() {
+            const map = new HashMap((a) => a, (a, b) => a == b)
+            map.add(2, 3)
+            map.add(5, 3)
+            map.add(2, 10)
+
+            // 返回的是 3，因为我们的 BST 树不支持重复数据的修改
+            alert(map.get(2))
+        }
+
+
+        // 所有功能的测试触发，可以通过注释达到测试某个动能的目的
+        // testLinkedListMap()
+        // testBSTMap()
+        testHashMap()
+    </script>
+</head>
+<body>
+
+</body>
+</html>
